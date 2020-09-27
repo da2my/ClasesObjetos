@@ -7,6 +7,10 @@ public class Unidad {
 	private double kg;
 	private double precioCoste;
 	private double precioVenta;
+	private double importeVenta;
+
+	private static double cuentaFruteria;
+	private static double sum;
 
 //	Constructores
 
@@ -63,12 +67,13 @@ public class Unidad {
 		this.precioVenta = precioVenta;
 	}
 
-//	Metodos
-	public double rebajar(double porcentaje) {
+	// Metodos
+	public void rebajar(double porcentaje) {
 		double rebaja;
-		double ventaRebajada;
+		double nuevoPrecio;
 		rebaja = (this.precioVenta * porcentaje) / 100;
-		ventaRebajada = this.precioVenta - rebaja;
+		nuevoPrecio = this.precioVenta - rebaja;
+//		setPrecioVenta(this.precioVenta - rebaja);//seguimos con esta linea para definir que solo se rebaja el precio de venta
 //		if (ventaRebajada < precioCoste) {
 //			System.out.println("No se aplica rebaja ");
 //			return this.precioVenta;
@@ -79,23 +84,32 @@ public class Unidad {
 //		}else {
 //			return this.precioVenta;
 //		}
-		double x = ventaRebajada < precioCoste ? this.precioVenta :  ventaRebajada; 
-		return x;
-
+		setPrecioVenta(nuevoPrecio < precioCoste ? this.precioVenta : nuevoPrecio);
+		System.out.println("Precio rebajado del cargamento: " + nuevoPrecio + "\n");
 	}
 
-	public double vender(double kg) {
-		if (kg > this.kg) {
-			kg--;
+	public double vender(double kgVende) {
+		if (kgVende <= this.kg) {
+			importeVenta = kgVende * precioVenta;// importe de venta
+			setKg(this.kg - kgVende);// numero de kilos que quedan
+			sum += importeVenta;
+			System.out.println("Operación realizada con exito");
 		} else {
-			System.out.println("Error");
+			System.out.println("Venta no cerrada, error");
 		}
-		return kg;
+		System.out.print("El importe de la venta es: ");
+
+		return importeVenta;
 	}
 
-	public String mismoOrigen(Unidad u, Unidad x) {
-		System.out.println("El origen de estos dos cargamentos es: ");
-		if (u.getOrigen().equals(origen) && x.getOrigen().equals(origen)) {
+	public static double muestraBeneficio() {
+		cuentaFruteria = sum;
+		return cuentaFruteria;
+	}
+
+	public String mismoOrigen(Unidad cargaX, Unidad cargaY) {
+//		System.out.println("El origen de estos dos cargamentos es: ");
+		if (cargaX.getOrigen().equals(origen) && cargaY.getOrigen().equals(origen)) {
 			System.out.println("El mismo origen " + "'" + origen + "'");
 
 		} else {
