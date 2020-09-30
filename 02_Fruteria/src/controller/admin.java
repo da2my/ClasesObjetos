@@ -11,7 +11,7 @@ public class admin {
 		DecimalFormat dFormat = new DecimalFormat("###.##");
 
 		Unidad carga1 = new Unidad("Mango", "Ecuador", 10, 0.79, 1.50);
-		Unidad carga2 = new Unidad("Manzana", "Chile", 15, 0.43, 1.35);
+		Unidad carga2 = new Unidad("Manzana", "Ecuador", 15, 0.43, 1.35);
 		Unidad carga3 = new Unidad("Higos", "Palestina", 15, 2.75, 4.50);
 
 //		Pruebas
