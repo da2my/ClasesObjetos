@@ -1,10 +1,12 @@
 package model;
 
 public class Viaje {
+	private final float PRICE_PP = (float) 460.7;
+
 	private String from;
 	private String to;
 	private String code;
-	private float price=(float) 460.7;
+	private float price;
 	private int adults;
 	private int child;
 	private float importe;
@@ -13,6 +15,13 @@ public class Viaje {
 
 	public Viaje(String code) {
 		this.code = code.toUpperCase();
+	}
+
+	public Viaje(String from, String to, String code) {
+		this.from = from;
+		this.to = to;
+		this.code = code.toUpperCase();
+
 	}
 
 	public String getFrom() {
@@ -62,16 +71,33 @@ public class Viaje {
 	public void setChild(int child) {
 		this.child = child;
 	}
-	
+
 	public float reserva(int plzChild, int plzAdults) {
-		if ((plzAdults+plzChild)<=180) {
-			adu = plzAdults*price;
-			chi=((plzChild*price)*20)/100;
-		}else {
+		this.child = plzChild;
+		this.adults = plzAdults;
+		if ((plzAdults + plzChild) <= 180) {
+			adu = plzAdults * PRICE_PP;
+			chi = ((plzChild * PRICE_PP) * 20) / 100;
+
+		} else {
 			System.out.println("Error");
 		}
-		
-		return importe=adu+chi;
+		setPrice(importe = adu + chi);
+		return importe = adu + chi;
+	}
+
+	public String modificacion(int plzChild, int plzAdults) {
+		setChild(plzChild);
+		setAdults(plzAdults);
+		if ((plzAdults + plzChild) <= 180) {
+			adu = plzAdults * PRICE_PP;
+			chi = ((plzChild * PRICE_PP) * 20) / 100;
+			setPrice(importe = adu + chi);
+			return "Viaje modificado";
+		} else {
+
+			return "Error";
+		}
 	}
 
 	@Override
@@ -80,5 +106,4 @@ public class Viaje {
 				+ ", child=" + child + "]";
 	}
 
-	
 }
