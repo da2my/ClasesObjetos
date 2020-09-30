@@ -71,6 +71,15 @@ public class Viaje {
 	public void setChild(int child) {
 		this.child = child;
 	}
+	
+	public float getImporte() {
+		return importe;
+	}
+
+	public float setImporte(float importe) {
+		this.importe = importe;
+		return importe;
+	}
 
 	public float reserva(int plzChild, int plzAdults) {
 		this.child = plzChild;
@@ -82,8 +91,8 @@ public class Viaje {
 		} else {
 			System.out.println("Error");
 		}
-		setPrice(importe = adu + chi);
-		return importe = adu + chi;
+		setPrice(setImporte(adu + chi));
+		return setImporte(adu + chi);
 	}
 
 	public String modificacion(int plzChild, int plzAdults) {
@@ -92,7 +101,7 @@ public class Viaje {
 		if ((plzAdults + plzChild) <= 180) {
 			adu = plzAdults * PRICE_PP;
 			chi = ((plzChild * PRICE_PP) * 20) / 100;
-			setPrice(importe = adu + chi);
+			setPrice(setImporte(adu + chi));
 			return "Viaje modificado";
 		} else {
 
@@ -106,5 +115,6 @@ public class Viaje {
 		return "Viaje [from=" + from + ", to=" + to + ", code=" + code + ", price=" + price + ", adults=" + adults
 				+ ", child=" + child + "]";
 	}
+
 
 }
