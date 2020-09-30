@@ -100,6 +100,7 @@ public class Viaje {
 		}
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Viaje [from=" + from + ", to=" + to + ", code=" + code + ", price=" + price + ", adults=" + adults

@@ -25,6 +25,7 @@ public class Admin {
 
 		System.out.println("Recaudación total de los viajes: "+(v1.getPrice() + v2.getPrice()));
 		System.out.println();
+		
 	}
 
 }
