@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Alumno {
@@ -9,6 +10,16 @@ public class Alumno {
 	private float notaProg;
 	private float notaBBDD;
 	private float notaSis;
+	private boolean notaMedia;
+
+	static Random r = new Random();
+	static Random r1 = new Random();
+	static Random r2 = new Random();
+	private static float notaP;
+	private static float notaB;
+	private static float notaS;
+	private static float nota;
+	private static int aluu = 1;
 
 	public Alumno() {
 
@@ -61,23 +72,28 @@ public class Alumno {
 
 //Metodo de tipo ArrayList || Instancia un objeto de tipo ArrayList "al" || Con un for que, por cada iteración crea un objeto nuevo de la clase Alumno
 	public static ArrayList<Alumno> creaAlumnos(int numAlumnos) {
-		Random r = new Random();
-		Random r1 = new Random();
-		Random r2 = new Random();
 		ArrayList<Alumno> al = new ArrayList<Alumno>();
 		for (int i = 0; i < numAlumnos; i++) {
-			float notaP = (float) r.nextInt(9)+1;
-			float notaB = (float) r1.nextInt(9)+1;
-			float notaS = (float) r2.nextInt(9)+1;
-			Alumno alumno = new Alumno(notaP, notaB,notaS);
+			notaP = (float) r.nextInt(10) + 1;
+			notaB = (float) r1.nextInt(10) + 1;
+			notaS = (float) r2.nextInt(10) + 1;
+			Alumno alumno = new Alumno(notaP, notaB, notaS);
+			System.out.println("Alumno " + alumno.notaMedia());
 			al.add(alumno);
 		}
 		return al;
 	}
 
+	public float notaMedia() {
+		float aux = notaB + notaP + notaS;
+		nota = aux / 3;
+		return nota;
+	}
+
 	@Override
 	public String toString() {
-		return "Alumno [notaProg=" + notaProg + ", notaBBDD=" + notaBBDD + ", notaSis=" + notaSis + "]";
+		return "Alumno" + " " + aluu++ + " notaProg=" + notaProg + " notaBBDD=" + notaBBDD + " notaSis=" + notaSis
+				+ "\n";
 	}
 
 }
