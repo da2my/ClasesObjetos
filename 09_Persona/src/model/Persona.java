@@ -32,6 +32,14 @@ public class Persona {
 		altura = 0.0;
 		nacionalidad = "";
 		estadoCivil = ESTADO_CIVIL;
+	}
+
+	public Persona(String nombre, int edad, char sexo, double peso, double altura) {
+		this.nombre = nombre;
+		this.edad = edad;
+		this.sexo = sexo;
+		this.peso = peso;
+		this.altura = altura;
 
 	}
 
@@ -132,19 +140,19 @@ public class Persona {
 		}
 		return mayor;
 	}
-	
+
 	public static void comprobarSexo(char sexo) {
-		String sex = Character.toString(sexo);
-		sex.toUpperCase();
-		if (sex=="H") {
-			System.out.println(sex="H");
-		}else if(sex=="M") {
+		String sex;
+		sex = Character.toString(sexo);
+		if (sex.equalsIgnoreCase("H")) {
+			System.out.println("H");
+		} else if (sex.equalsIgnoreCase("M")) {
 			System.out.println("M");
-		}else {
+		} else {
 			System.out.println("H");
 		}
+		// return sexo=((sexo=='H'&sexo=='M') ? 'H':'M');
 	}
-	
 
 	@Override
 	public String toString() {
