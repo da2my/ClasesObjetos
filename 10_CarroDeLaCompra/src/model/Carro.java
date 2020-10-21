@@ -34,11 +34,13 @@ public class Carro {
 		this.nif = nif;
 	}
 
+//	public double facturaFinal(double precioBase, double precioDescuento, double) {
+//		double factura = 0;
+//		return factura;
+//	}
+	
 	@Override
 	public String toString() {
 		return "Carro [nombre=" + nombre + ", direccion=" + direccion + ", nif=" + nif + "]";
 	}
-	
-	
-
 }
