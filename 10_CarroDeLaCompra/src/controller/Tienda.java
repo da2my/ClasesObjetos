@@ -1,5 +1,6 @@
 package controller;
 
+import model.Carro;
 import model.Producto;
 
 public class Tienda {
@@ -8,7 +9,7 @@ public class Tienda {
 	
 	protected Producto[] misProductos;
 	
-	public Tienda () {
+	public Tienda (Carro carro) {
 		misProductos = new Producto[TOTAL_PRODUCTOS];
 		carroCompra();
 	}
@@ -21,14 +22,14 @@ public class Tienda {
 		misProductos[4] = new Producto("leche", 2, "BASICO");
 		
 	}
-	
+
 	public void mostrarProductos() {
 		
 		for(int i = 0; i < misProductos.length; i++) {
 			System.out.println(misProductos[i]);
-		}
-		
+		}	
 	}
+	
 	
 	public void mostrarPrecio() {
 		double totalProductos=0;
@@ -37,7 +38,8 @@ public class Tienda {
 				totalProductos += misProductos[i].precioConIVA();
 			}
 		}
-		System.out.println(String.join(" ", Double.toString(totalProductos), "€"));
-		
+		System.out.println(String.join(" ", "Total de la compra IVA incluido: ", Double.toString(totalProductos), "€"));
 	}
+	
+	
 }

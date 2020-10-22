@@ -6,8 +6,14 @@ public class Carro {
 	private String direccion;
 	private String nif;
 	
-	public Carro() {
+	public Carro () {
 		
+	}
+	
+	public Carro(String nombre, String direccion, String nif) {
+		this.nombre=nombre;
+		this.direccion=direccion;
+		this.nif=nif;
 	}
 
 	public String getNombre() {
@@ -34,10 +40,7 @@ public class Carro {
 		this.nif = nif;
 	}
 
-//	public double facturaFinal(double precioBase, double precioDescuento, double) {
-//		double factura = 0;
-//		return factura;
-//	}
+
 	
 	@Override
 	public String toString() {

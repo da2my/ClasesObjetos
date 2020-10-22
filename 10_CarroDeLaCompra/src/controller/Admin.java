@@ -1,13 +1,17 @@
 package controller;
 
 import model.Carro;
-import model.Producto;
 
 public class Admin {
 
 	public static void main(String[] args) {
 		
-		new Tienda().mostrarProductos();
-		new Tienda().mostrarPrecio();
+		Carro c1 = new Carro("David", "C/Lugo", "59283109Y");
+		System.out.println(c1.toString());
+		
+		new Tienda(c1).mostrarProductos();
+		new Tienda(c1).mostrarPrecio();
+		
+		
 	}
 }

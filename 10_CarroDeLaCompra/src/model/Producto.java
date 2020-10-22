@@ -6,19 +6,18 @@ public class Producto {
 
 	protected String nombre;
 	protected double precioBase;
-	protected IVA tipoIVA;
+	protected IVA tipoProducto;
 
 
 	public Producto() {
-
 	}
 
 	public Producto(String nombre, double precioBase, String tipo) {
 		this.nombre = nombre;
 		this.precioBase = precioBase;
-		tipoIVA = tipoProducto(tipo);
+		tipoProducto = tipoProducto(tipo);
 	}
-	
+		
 
 	public String getNombre() {
 		return nombre;
@@ -37,11 +36,11 @@ public class Producto {
 	}
 
 	public IVA getTipoIVA() {
-		return tipoIVA;
+		return tipoProducto;
 	}
 
 	public void setTipoIVA(IVA tipoIVA) {
-		this.tipoIVA = tipoIVA;
+		this.tipoProducto = tipoIVA;
 	}
 
 	public IVA tipoProducto(String tipo) {
@@ -64,12 +63,13 @@ public class Producto {
 	}
 	
 	public double precioConIVA() {
-		double precioIVA = (getPrecioBase() * tipoIVA.getTax()) + getPrecioBase();
+		double precioIVA = (getPrecioBase() * tipoProducto.getTax()) + getPrecioBase();
 		return precioIVA;
 	}
 
 	@Override
 	public String toString() {
-		return "Producto [nombre=" + nombre + ", precioBase=" + precioBase + ", tipoIVA=" + tipoIVA + "]";
+		return "Producto [nombre=" + nombre + ", precioBase=" + precioBase + ", tipoProducto=" + precioConIVA() + "]";
 	}
+	
 }
