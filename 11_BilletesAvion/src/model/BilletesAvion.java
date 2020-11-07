@@ -4,10 +4,13 @@ import model.types.Clase;
 
 public class BilletesAvion {
 
+//	Atributos
 	private String nombre;
 	private String nif;
 	private Clase tipo;
+	private double coste;
 
+//	Constructores
 	public BilletesAvion() {
 
 	}
@@ -27,7 +30,7 @@ public class BilletesAvion {
 		this.tipo = tipo;
 	}
 
-//
+//	Getters & Setters
 
 	public String getNombre() {
 		return nombre;
@@ -53,14 +56,23 @@ public class BilletesAvion {
 		this.tipo = tipo;
 	}
 
-//	
+	public double getCoste() {
+		return coste;
+	}
+
+	public void setCoste(double coste) {
+		this.coste = coste;
+	}
+	
+//	toString()
 
 	@Override
 	public String toString() {
-		return "BilletesAvion [nombre=" + nombre + ", nif=" + nif + ", tipo=" + tipo + "]";
+		return "BilletesAvion [nombre=" + nombre + ", nif=" + nif + ", tipo=" + tipo + ", coste=" + coste + "]";
 	}
 
-//	
+
+//	Metodos	
 	public static void facturar(BilletesAvion ob) {
 		int asiento = 0;
 		System.out.print("El asiento asignado segun la clase es el #");
@@ -82,9 +94,11 @@ public class BilletesAvion {
 		}
 	}
 
+
 	public boolean complemento(String comp) {
 		boolean poder = false;
 		if (comp.equalsIgnoreCase("Baño")) {
+			
 			poder = true;
 		}
 		if (comp.equalsIgnoreCase("Catering")) {
@@ -108,7 +122,8 @@ public class BilletesAvion {
 	}
 
 	public void reservaInicial1(BilletesAvion obj) {
-		if (obj.getTipo().equals(Clase.VIP)||obj.getTipo().equals(Clase.BUSINESS)||obj.getTipo().equals(Clase.TURISTA)) {
+		if (obj.getTipo().equals(Clase.VIP) || obj.getTipo().equals(Clase.BUSINESS)
+				|| obj.getTipo().equals(Clase.TURISTA)) {
 			System.out.println("La reserva Inicial, por Clase, esta hecha");
 		}
 	}

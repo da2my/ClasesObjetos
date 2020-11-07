@@ -9,12 +9,12 @@ public class Admin {
 
 	public static void main(String[] args) {
 		Consola con = new Consola();
-		BilletesAvion b1 = new BilletesAvion("David", "59238023k", Clase.VIP);
+		BilletesAvion b1 = new BilletesAvion("David", "59238023k", Clase.TURISTA);
 		BilletesAvion b2 = new BilletesAvion("Amaru", "28475012l");
 		BilletesAvion b3 = new BilletesAvion(Clase.BUSINESS);
 		
 		con.writeString(b1.toString());
-
+//
 		BilletesAvion.facturar(b1);
 		con.writeBoolean(b1.complemento("baño"));
 		con.writeBoolean(b1.complemento("catering"));

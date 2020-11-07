@@ -2,10 +2,16 @@ package model.types;
 
 public enum Clase {
 	
-	TURISTA, BUSINESS, VIP;
+	TURISTA(200), BUSINESS(400), VIP(600);
 	
-	private Clase() {
-		
+	private double value;
+	
+	private Clase(double value) {
+		this.value=value;
+	}
+	
+	public double precio() {
+		return this.value;
 	}
 
 }
