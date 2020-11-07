@@ -9,7 +9,16 @@ public class BilletesAvion {
 	private Clase tipo;
 
 	public BilletesAvion() {
-		
+
+	}
+
+	public BilletesAvion(String nombre, String nif) {
+		this.nombre = nombre;
+		this.nif = nif;
+	}
+
+	public BilletesAvion(Clase tipo) {
+		this.tipo = tipo;
 	}
 
 	public BilletesAvion(String nombre, String nif, Clase tipo) {
@@ -72,7 +81,7 @@ public class BilletesAvion {
 			System.out.println(Integer.toString(asiento));
 		}
 	}
-	
+
 	public boolean complemento(String comp) {
 		boolean poder = false;
 		if (comp.equalsIgnoreCase("Baño")) {
@@ -83,7 +92,7 @@ public class BilletesAvion {
 		}
 		return poder;
 	}
-	
+
 	public int numMaletas(int num) {
 		int maleta = 1;
 		if (maleta < num) {
@@ -91,8 +100,21 @@ public class BilletesAvion {
 		}
 		return maleta;
 	}
-	
-	public void reservaInicial() {
-		
+
+	public void reservaInicial(BilletesAvion ob) {
+		if (ob.getNombre().equalsIgnoreCase(nombre) && ob.getNif().equalsIgnoreCase(nif)) {
+			System.out.println("La reserva Inicial, por nombre y nif, esta hecha");
+		}
 	}
+
+	public void reservaInicial1(BilletesAvion obj) {
+		if (obj.getTipo().equals(Clase.VIP)||obj.getTipo().equals(Clase.BUSINESS)||obj.getTipo().equals(Clase.TURISTA)) {
+			System.out.println("La reserva Inicial, por Clase, esta hecha");
+		}
+	}
+
+//	
+//	ob.getTipo().equals(Clase.VIP) || ob.getTipo().equals(Clase.BUSINESS)
+//	|| ob.getTipo().equals(Clase.TURISTA)
+
 }
