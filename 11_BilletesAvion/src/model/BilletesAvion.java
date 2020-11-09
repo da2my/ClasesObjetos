@@ -4,13 +4,14 @@ import model.types.Clase;
 
 public class BilletesAvion {
 
-//	Atributos
 	private String nombre;
 	private String nif;
 	private Clase tipo;
+	private int maleta;
+	private boolean wc;
+	private boolean catering;
 	private double coste;
 
-//	Constructores
 	public BilletesAvion() {
 
 	}
@@ -30,7 +31,16 @@ public class BilletesAvion {
 		this.tipo = tipo;
 	}
 
-//	Getters & Setters
+	public BilletesAvion(String nombre, String nif, Clase tipo, int maleta, boolean wc, boolean catering,
+			double coste) {
+		this(nombre, nif, tipo);
+		this.maleta = maleta;
+		this.wc = wc;
+		this.catering = catering;
+		this.coste = coste;
+	}
+
+	//
 
 	public String getNombre() {
 		return nombre;
@@ -63,17 +73,41 @@ public class BilletesAvion {
 	public void setCoste(double coste) {
 		this.coste = coste;
 	}
-	
-//	toString()
+
+	public int getMaleta() {
+		return maleta;
+	}
+
+	public void setMaleta(int maleta) {
+		this.maleta = maleta;
+	}
+
+	public boolean isWc() {
+		return wc;
+	}
+
+	public void setWc(boolean wc) {
+		this.wc = wc;
+	}
+
+	public boolean isCatering() {
+		return catering;
+	}
+
+	public void setCatering(boolean catering) {
+		this.catering = catering;
+	}
+
+	//
 
 	@Override
 	public String toString() {
-		return "BilletesAvion [nombre=" + nombre + ", nif=" + nif + ", tipo=" + tipo + ", coste=" + coste + "]";
+		return "BilletesAvion [baño=" + wc + ", catering=" + catering + ", coste=" + coste + ", maleta=" + maleta
+				+ ", nif=" + nif + ", nombre=" + nombre + ", tipo=" + tipo + "]";
 	}
 
-
-//	Metodos	
-	public static void facturar(BilletesAvion ob) {
+	//
+	public static void reservaIni(BilletesAvion ob) {
 		int asiento = 0;
 		System.out.print("El asiento asignado segun la clase es el #");
 		if (ob.getTipo().equals(Clase.VIP)) {
@@ -94,25 +128,59 @@ public class BilletesAvion {
 		}
 	}
 
-
-	public boolean complemento(String comp) {
-		boolean poder = false;
-		if (comp.equalsIgnoreCase("Baño")) {
-			
-			poder = true;
+	public double costeComplemento(BilletesAvion comp) {
+		double price = 0;
+		double contWC = 10;
+		double contCatering = 20;
+		if (comp.tipo.equals(Clase.VIP) || comp.tipo.equals(Clase.BUSINESS)) {
+			setWc(true);
+			setCatering(true);
+		} else if (comp.tipo.equals(Clase.TURISTA)) {
+			if (wc && catering) {
+				price = contWC + contCatering;
+			} else if (catering) {
+				price = contCatering;
+			} else if (wc) {
+				price = contWC;
+			}
 		}
-		if (comp.equalsIgnoreCase("Catering")) {
-			poder = true;
-		}
-		return poder;
+		return price;
 	}
 
-	public int numMaletas(int num) {
-		int maleta = 1;
-		if (maleta < num) {
-			maleta = num;
+	public double precio(double costeComplemento, double costeMaleta) {
+		setCoste(costeComplemento + costeMaleta + getTipo().getValue());
+
+		return getCoste();
+	}
+
+	public double costeMaleta(BilletesAvion bag) {
+		double price = 0;
+		double addBag = 50;
+		int ite = 0;
+		switch (tipo) {
+			case VIP:
+
+				break;
+			case BUSINESS:
+				if (maleta > 3) {
+					for (int i = 3; i < maleta; i++) {
+						ite++;
+						price = ite * addBag;
+					}
+				}
+				break;
+			case TURISTA:
+				if (maleta > 1) {
+					for (int i = 1; i < maleta; i++) {
+						ite++;
+						price = ite * addBag;
+					}
+				}
+				break;
+			default:
+				break;
 		}
-		return maleta;
+		return price;
 	}
 
 	public void reservaInicial(BilletesAvion ob) {
@@ -127,9 +195,4 @@ public class BilletesAvion {
 			System.out.println("La reserva Inicial, por Clase, esta hecha");
 		}
 	}
-
-//	
-//	ob.getTipo().equals(Clase.VIP) || ob.getTipo().equals(Clase.BUSINESS)
-//	|| ob.getTipo().equals(Clase.TURISTA)
-
 }
