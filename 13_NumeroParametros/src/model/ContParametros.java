@@ -1,37 +1,46 @@
 package model;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class ContParametros {
 
-	private static String[] lista;
-	private static int numParametros;
+//	Lo que esta comentado lo hice a mi manera sin ver los apuntes, use un array
 
-	public ContParametros(String[] lista) {
-		this.lista = lista;
-	}
+//	private static String[] lista;
+//	private static int numParametros;
 
-	public String[] getLista() {
-		return lista;
-	}
-
-	public void setLista(String[] lista) {
-		this.lista = lista;
-	}
-
-	@Override
-	public String toString() {
-		return "ContParametros [lista=" + Arrays.toString(lista) + "]";
-	}
-
-	public static void numParametros(String[] list) {
-		int num = 0;
-		for (String string : list) {
-			System.out.print("Posición " + numParametros++ + ": ");
-			System.out.println(string);
-			num = numParametros;
+	public static void numParametros(String msg, String... v) {
+		System.out.println(msg + v.length);
+		for (int i = 0; i < v.length; i++) {
+			System.out.println(" Posición " + i + ": " + v[i]);
 		}
-		System.out.println();
-		System.out.println("El número de parámetros es: " + num);
 	}
+
+//	public ContParametros(String[] lista) {
+//		this.lista = lista;
+//	}
+//
+//	public String[] getLista() {
+//		return lista;
+//	}
+//
+//	public void setLista(String[] lista) {
+//		this.lista = lista;
+//	}
+
+//	@Override
+//	public String toString() {
+//		return "ContParametros [lista=" + Arrays.toString(lista) + "]";
+//	}
+
+//	public static void numParametros(String[] list) {
+//		int num = 0;
+//		for (String string : list) {
+//			System.out.print("Posición " + numParametros++ + ": ");
+//			System.out.println(string);
+//			num = numParametros;
+//		}
+//		System.out.println();
+//		System.out.println("El número de parámetros es: " + num);
+//	}
 }
