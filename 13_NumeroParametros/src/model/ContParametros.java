@@ -16,6 +16,14 @@ public class ContParametros {
 		}
 	}
 
+	public static double sumParametros(double... v) {
+		double aux = 0;
+		for (double i : v) {
+			aux+=i;
+		}
+		return aux;
+	}
+	
 //	public ContParametros(String[] lista) {
 //		this.lista = lista;
 //	}
