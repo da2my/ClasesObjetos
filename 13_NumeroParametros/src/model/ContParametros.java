@@ -24,6 +24,14 @@ public class ContParametros {
 		return aux;
 	}
 	
+	public static double sumParametros(int intro, int in, double... v) {
+		double aux = 0;
+		for (double i : v) {
+			aux+=i;
+		}
+		return aux+intro+in;
+	}
+	
 //	public ContParametros(String[] lista) {
 //		this.lista = lista;
 //	}

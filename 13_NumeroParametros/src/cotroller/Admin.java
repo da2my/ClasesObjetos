@@ -12,6 +12,7 @@ public class Admin {
 	
 		System.out.println("La suma de los numeros introducidos asciende a: "+ContParametros.sumParametros(2.8,3,6,1));
 		
+		System.out.println("La suma de los numeros introducidos asciende a: "+ContParametros.sumParametros(7,5));
 	}
 
 }
