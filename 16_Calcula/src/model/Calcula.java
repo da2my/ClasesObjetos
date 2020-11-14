@@ -48,12 +48,24 @@ public class Calcula {
 	}
 
 	public static float menor(float... num) {
-		return 0;
-
+		float aux = 1000;
+		for (float i : num) {
+			if (aux > i) {
+				aux = i;
+			}
+		}
+		return aux;
 	}
 
 	public static String menor(String... cadena) {
-		return null;
+		String aux = Integer.toString(1000);
+		for (String string : cadena) {
+			if (aux.length() > string.length()) {
 
+				aux = string;
+
+			}
+		}
+		return Integer.toString(aux.length());
 	}
 }
